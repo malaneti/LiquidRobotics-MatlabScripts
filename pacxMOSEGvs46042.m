@@ -1,54 +1,53 @@
 % pacxMOSEGvs46042.m
 % scrpit to coompare wave measuremetns from 46042 and PacX vehicles
-% Luke Beatman 11/29/11
 % PacX Vehicles were in the vicinity of the MB moorings from 11/23/11 at 7:00 AM to 12/9/11 at 6:00 AM
 
 
-% str = urlread('http://www.ndbc.noaa.gov/data/realtime2/46236.spec');
-% i4header = findstr('degT',str);
-% str = str(i4header(2)+4:end);
+ str = urlread('http://www.ndbc.noaa.gov/data/realtime2/46236.spec');
+ i4header = findstr('degT',str);
+ str = str(i4header(2)+4:end);
 % 
-% str = strrep(str,' N ',' 0 ');
-% str = strrep(str,' NNW ',' 337.5 ');
-% str = strrep(str,' NW ',' 315 ');
-% str = strrep(str,' WNW ',' 292.5 ');
-% str = strrep(str,' W ',' 270 ');
-% str = strrep(str,' WSW ',' 247.5 ');
-% str = strrep(str,' SW ',' 225 ');
-% str = strrep(str,' SSW ',' 202.5 ');
-% str = strrep(str,' S ',' 180 ');
-% str = strrep(str,' SSE ',' 157.5 ');
-% str = strrep(str,' SE ',' 135 ');
-% str = strrep(str,' ESE ',' 112.5 ');
-% str = strrep(str,' E ',' 90 ');
-% str = strrep(str,' ENE ',' 67.5 ');
-% str = strrep(str,' NE ',' 45 ');
-% str = strrep(str,' NNE ',' 22.5 ');
+ str = strrep(str,' N ',' 0 ');
+ str = strrep(str,' NNW ',' 337.5 ');
+ str = strrep(str,' NW ',' 315 ');
+ str = strrep(str,' WNW ',' 292.5 ');
+ str = strrep(str,' W ',' 270 ');
+ str = strrep(str,' WSW ',' 247.5 ');
+ str = strrep(str,' SW ',' 225 ');
+ str = strrep(str,' SSW ',' 202.5 ');
+ str = strrep(str,' S ',' 180 ');
+ str = strrep(str,' SSE ',' 157.5 ');
+ str = strrep(str,' SE ',' 135 ');
+ str = strrep(str,' ESE ',' 112.5 ');
+ str = strrep(str,' E ',' 90 ');
+ str = strrep(str,' ENE ',' 67.5 ');
+ str = strrep(str,' NE ',' 45 ');
+ str = strrep(str,' NNE ',' 22.5 ');
 % 
-% str = strrep(str,' AVERAGE ',' 0 ');
-% str = strrep(str,' SWELL ',' 1 ');
-% str = strrep(str,' STEEP ',' 2 ');
-% str = strrep(str,' VERY_STEEP ',' 3 ');
-% str = strrep(str,' N/A ',' NaN ');
+ str = strrep(str,' AVERAGE ',' 0 ');
+ str = strrep(str,' SWELL ',' 1 ');
+ str = strrep(str,' STEEP ',' 2 ');
+ str = strrep(str,' VERY_STEEP ',' 3 ');
+ str = strrep(str,' N/A ',' NaN ');
 % 
-% data = str2num(str);
-% year = data(:,1);
-% month = data(:,2);
-% day = data(:,3);
-% hour = data(:,4);
-% minute = data(:,5);
+ data = str2num(str);
+ year = data(:,1);
+ month = data(:,2);
+ day = data(:,3);
+ hour = data(:,4);
+ minute = data(:,5);
 % 
-% time4wavedata = datenum(year,month,day,hour,minute,0);
-% wave_height = data(:,6);
-% swell_height = data(:,7);
-% swell_period = data(:,8);
-% windwave_height = data(:,9);
-% windwave_period = data(:,10);
-% swell_dir = data(:,11);
-% windwave_dir = data(:,12);
-% steep = data(:,13);
-% average_period = data(:,14);
-% meanwavedirection = data(:,15);
+ time4wavedata = datenum(year,month,day,hour,minute,0);
+ wave_height = data(:,6);
+ swell_height = data(:,7);
+ swell_period = data(:,8);
+ windwave_height = data(:,9);
+ windwave_period = data(:,10);
+ swell_dir = data(:,11);
+ windwave_dir = data(:,12);
+ steep = data(:,13);
+ average_period = data(:,14);
+ meanwavedirection = data(:,15);
 
 
 
@@ -258,45 +257,45 @@ pd4pcx4_wvaper = abs(difpcx44wvaper./avepcx44wvaper) * 100;
 
 
 
-% texty = [0 80];
-% textx = [datenum(2011,12,7,0,0,0) datenum(2011,12,7,0,0,0)];
-% figure(1)
-% hold on
-% plot(papa_timeM,pd4pcx1_wvht,'b.-')
-% plot(benj_timeM,pd4pcx2_wvht,'g.-')
-% plot(picc_timeM,pd4pcx3_wvht,'r.-')
-% plot(font_timeM,pd4pcx4_wvht,'c.-')
-% %plot(wavtimeM,wavheightM,'k.-')
-% tH = plot(textx,texty,'color',[1 203/255 0])
-% ylim([0 80])
-% set(tH,'linewidth',1.5)
-% text(datenum(2011,12,7,0,0,0),60,'Hardware/Software Servicing')
-% title('Percent Difference in Wave Height between PacX Gliders and NDBC 46236')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','NorthWest')
-% %print -dpng 'C:\a_data\pac_crossing\pd_pacxwavhtvs46236.png'
+ texty = [0 80];
+ textx = [datenum(2011,12,7,0,0,0) datenum(2011,12,7,0,0,0)];
+ figure(1)
+ hold on
+ plot(papa_timeM,pd4pcx1_wvht,'b.-')
+ plot(benj_timeM,pd4pcx2_wvht,'g.-')
+ plot(picc_timeM,pd4pcx3_wvht,'r.-')
+ plot(font_timeM,pd4pcx4_wvht,'c.-')
+ plot(wavtimeM,wavheightM,'k.-')
+ tH = plot(textx,texty,'color',[1 203/255 0])
+ ylim([0 80])
+ set(tH,'linewidth',1.5)
+ text(datenum(2011,12,7,0,0,0),60,'Hardware/Software Servicing')
+ title('Percent Difference in Wave Height between PacX Gliders and NDBC 46236')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','NorthWest')
+ print -dpng 'C:\a_data\pac_crossing\pd_pacxwavhtvs46236.png'
 % 
 % 
-% texty = [0 200]
-% textx = [datenum(2011,12,7,0,0,0) datenum(2011,12,7,0,0,0)]
-% figure(2)
-% hold on
-% plot(papa_timeM,pd4pcx1_wvper,'b.-')
-% plot(benj_timeM,pd4pcx2_wvper,'g.-')
-% plot(picc_timeM,pd4pcx3_wvper,'r.-')
-% plot(font_timeM,pd4pcx4_wvper,'c.-')
-% tH = plot(textx,texty,'color',[1 203/255 0])
-% ylim([0 160])
-% set(tH,'linewidth',1.5)
-% text(datenum(2011,12,7,0,0,0),120,'Hardware/Software Servicing')
-% title('Percent Difference in Wave Dominant Period between PacX Gliders and NDBC 46236')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','NorthWest')
-% %print -dpng 'C:\a_data\pac_crossing\pd_pacxwavpervs46236.png'
+ texty = [0 200]
+ textx = [datenum(2011,12,7,0,0,0) datenum(2011,12,7,0,0,0)]
+ figure(2)
+ hold on
+ plot(papa_timeM,pd4pcx1_wvper,'b.-')
+ plot(benj_timeM,pd4pcx2_wvper,'g.-')
+ plot(picc_timeM,pd4pcx3_wvper,'r.-')
+ plot(font_timeM,pd4pcx4_wvper,'c.-')
+ tH = plot(textx,texty,'color',[1 203/255 0])
+ ylim([0 160])
+ set(tH,'linewidth',1.5)
+ text(datenum(2011,12,7,0,0,0),120,'Hardware/Software Servicing')
+ title('Percent Difference in Wave Dominant Period between PacX Gliders and NDBC 46236')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','NorthWest')
+ %print -dpng 'C:\a_data\pac_crossing\pd_pacxwavpervs46236.png'
 
 
 texty = [0 26];
@@ -319,20 +318,6 @@ datetick('x','mm/dd','keepticks','keeplimits')
 legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','Mooring','location','NorthWest')
 return
 print -dpng 'C:\a_data\pac_crossing\pacxwavpervs46236.png'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 % %print -dpng 'C:\a_data\pac_crossing\pd_pacxwavdirvs46236.png'
@@ -359,35 +344,35 @@ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','NorthWes
 return
 print -dpng 'C:\a_data\pac_crossing\pd_pacxwavpervs46236.png'
 
-% figure(4)
-% hold on
-% plot(papa_timeM,papa_wavperM,'b.-')
-% plot(benj_timeM,benj_wavperM,'g.-')
-% plot(picc_timeM,picc_wavperM,'r.-')
-% plot(font_timeM,font_wavperM,'c.-')
-% plot(wavtimeM,wavperM,'k.-')
-% title('Wave Period from PacX vehicles vs. NDBC 46236')
-% xlabel('Date')
-% ylabel('Period(seconds)')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','Mooring')
-% %print -dpng 'C:\a_data\pac_crossing\pacxwavpervs46236.png'
+ figure(4)
+ hold on
+ plot(papa_timeM,papa_wavperM,'b.-')
+ plot(benj_timeM,benj_wavperM,'g.-')
+ plot(picc_timeM,picc_wavperM,'r.-')
+ plot(font_timeM,font_wavperM,'c.-')
+ plot(wavtimeM,wavperM,'k.-')
+ title('Wave Period from PacX vehicles vs. NDBC 46236')
+ xlabel('Date')
+ ylabel('Period(seconds)')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','Mooring')
+ print -dpng 'C:\a_data\pac_crossing\pacxwavpervs46236.png'
 
-%figure(3)
+figure(3)
 % 
-% hold on
-% plot(timevec_papa,wv_dir_papa,'b.-')
-% plot(timevec_benj,wv_dir_benj,'g.-')
-% plot(timevec_picc,wv_dir_picc,'r.-')
-% plot(timevec_font,wv_dir_font,'c.-')
-% plot(wavtimeM,wavdirM,'k.-')
-% xlim([datenum(2011,11,23,0,0,0) datenum(2011,12,11,0,0,0)])
-% title('Wave Direction from PacX Gliders and NDBC 46236')
-% xlabel('Date')
-% ylabel('Direction(degrees T)')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','Mooring')
-% return
-% %print -dpng 'C:\a_data\pac_crossing\pacxwavpervs46236.png'
+ hold on
+ plot(timevec_papa,wv_dir_papa,'b.-')
+ plot(timevec_benj,wv_dir_benj,'g.-')
+ plot(timevec_picc,wv_dir_picc,'r.-')
+ plot(timevec_font,wv_dir_font,'c.-')
+ plot(wavtimeM,wavdirM,'k.-')
+ xlim([datenum(2011,11,23,0,0,0) datenum(2011,12,11,0,0,0)])
+ title('Wave Direction from PacX Gliders and NDBC 46236')
+ xlabel('Date')
+ ylabel('Direction(degrees T)')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','Mooring')
+ return
+ print -dpng 'C:\a_data\pac_crossing\pacxwavpervs46236.png'
 
 
