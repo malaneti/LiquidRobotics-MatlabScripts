@@ -11,8 +11,7 @@ Plots for average wave period of Wave Glider and NDBC 51000, 240 nautical miles 
 Plots for wind speed and wave height for Wave Glider travelling over 9400 nautical miles traveled from San Francisco,  finally arriving in Hervey Bay Australia. Glider collected millions of data points and survived awesome storms.
 ![tumblr_mi9u3ioak01r7079oo4_r1_1280](https://cloud.githubusercontent.com/assets/17863675/16778968/29a83616-4825-11e6-915d-7a0f2a8865d9.png)
 
-Wave Glider Journey across Pacific Ocean:
+Wave Glider Journey across Pacific Ocean and satellite image:
 ![tumblr_mi9u3ioak01r7079oo3_1280](https://cloud.githubusercontent.com/assets/17863675/16778971/2e864fd8-4825-11e6-88da-da4be8013b31.png)
 
-Satellite image:
 ![tumblr_m79l68l9wr1r38sgh](https://cloud.githubusercontent.com/assets/17863675/16778973/347e9166-4825-11e6-8d47-d8e5ef4bb9ad.png)
