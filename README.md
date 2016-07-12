@@ -4,7 +4,7 @@ Project I worked on at Liquid Robotics internship
 
 ![tumblr_mi9u3ioak01r7079oo1_500](https://cloud.githubusercontent.com/assets/17863675/16778962/26320bd8-4825-11e6-8d9a-33f0ff4d4fee.jpg)
 
-Plots for average wave period + percent difference of Wave Glider and NDBC 51000, 240 nautical miles northeast of Hawaii:
+Plots for average wave period of Wave Glider and NDBC 51000, 240 nautical miles northeast of Hawaii:
 ![picture1](https://cloud.githubusercontent.com/assets/17863675/16779123/d3ad3634-4825-11e6-931b-7fd4580a60f7.png)
 ![picture2](https://cloud.githubusercontent.com/assets/17863675/16779128/d6c6ed2e-4825-11e6-824c-07cbc85b28e1.png)
 
