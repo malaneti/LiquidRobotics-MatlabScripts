@@ -1,6 +1,6 @@
 % pacxC3vs46092.m
 % script to plot C3 data from PacX vehicles during their stay at M1 in Monterey Bay
-% Luke Beatman; 11/30/11
+
 
 % read wetstar fluorescence data from netCDF file
 fldat = ncread('C:\a_data\pac_crossing\m1\wetstar_m1.nc','Fluorescence');
