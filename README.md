@@ -1,7 +1,7 @@
 # LiquidRobotics-MatlabScripts
 Project I worked on at Liquid Robotics internship 
 
-Image of Wave Glider at sea:
+
 ![tumblr_mi9u3ioak01r7079oo1_500](https://cloud.githubusercontent.com/assets/17863675/16778962/26320bd8-4825-11e6-8d9a-33f0ff4d4fee.jpg)
 
 Plots for average wave period and percent difference between Wave Glider and NDBC 51000 240 nautical miles northeast of Hawaii:
