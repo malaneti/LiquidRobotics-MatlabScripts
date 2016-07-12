@@ -1,6 +1,6 @@
 % pacxvs51000.m
 % script to plot CTD data from PacX vehicles during their stay at NDBC 51000
-% Luke Beatman; 02/27/2012
+
 
 
 start = '2012-02-25 03:00:00';                                  % limit data to times when gliders are within 8km
@@ -449,185 +449,184 @@ pd4pcx4_wavdper = abs(difpcx44wavdper./avepcx44wavdper) * 100;
 
 
 % Plot Water temperature Comparison
-% figure(1)
-% hold on
-% plot(pcx2_timeM,pcx2_tempM,'g.-')
-% plot(pcx3_timeM,pcx3_tempM,'r.-')
-% plot(pcx4_timeM,pcx4_tempM,'c.-')
-% plot(pcx2_timeM,wtemp_int,'k.-')
-% title('Water Temperature for PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Water Temperature(degrees C)')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwtempvs51000.png'
+ figure(1)
+ hold on
+ plot(pcx2_timeM,pcx2_tempM,'g.-')
+ plot(pcx3_timeM,pcx3_tempM,'r.-')
+ plot(pcx4_timeM,pcx4_tempM,'c.-')
+ plot(pcx2_timeM,wtemp_int,'k.-')
+ title('Water Temperature for PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Water Temperature(degrees C)')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwtempvs51000.png'
 % 
 % 
-% figure(2)
-% hold on
-% plot(benj_timeM,pd4pcx2_wtemp,'g.-')
-% hold on
-% plot(picc_timeM,pd4pcx3_wtemp,'r.-')
-% plot(font_timeM,pd4pcx4_wtemp,'c.-')
-% title('Percent Difference in Water Temperature between PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwtempvs51000_pd.png'
+ figure(2)
+ hold on
+ plot(benj_timeM,pd4pcx2_wtemp,'g.-')
+ hold on
+ plot(picc_timeM,pd4pcx3_wtemp,'r.-')
+ plot(font_timeM,pd4pcx4_wtemp,'c.-')
+ title('Percent Difference in Water Temperature between PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwtempvs51000_pd.png'
 
+% Plot Air temperature Comparison
+ figure(1)
+ hold on
+ plot(pcx2_timeM,pcx2_atempM,'g.-')
+ plot(pcx3_timeM,pcx3_atempM,'r.-')
+ plot(pcx4_timeM,pcx4_atempM,'c.-')
+ plot(benj_timeM,atemp_int,'k.-')
+ title('Air Temperature for PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Air Temperature(degrees C)')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxatempvs51000.png'
 % 
-% % Plot Air temperature Comparison
-% figure(1)
-% hold on
-% plot(pcx2_timeM,pcx2_atempM,'g.-')
-% plot(pcx3_timeM,pcx3_atempM,'r.-')
-% plot(pcx4_timeM,pcx4_atempM,'c.-')
-% plot(benj_timeM,atemp_int,'k.-')
-% title('Air Temperature for PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Air Temperature(degrees C)')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxatempvs51000.png'
-% 
-% figure(2)
-% hold on
-% plot(benj_timeM,pd4pcx2_atemp,'g.-')
-% hold on
-% plot(picc_timeM,pd4pcx3_atemp,'r.-')
-% plot(font_timeM,pd4pcx4_atemp,'c.-')
-% title('Percent Difference in Air Temperature between PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxatempvs51000_pd.png'
+ figure(2)
+ hold on
+ plot(benj_timeM,pd4pcx2_atemp,'g.-')
+ hold on
+ plot(picc_timeM,pd4pcx3_atemp,'r.-')
+ plot(font_timeM,pd4pcx4_atemp,'c.-')
+ title('Percent Difference in Air Temperature between PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxatempvs51000_pd.png'
 % 
 % % Plot Barometric Pressure Comparison
-% figure(3)
-% hold on
-% plot(pcx2_timeM,pcx2_bpM,'g.-')
-% plot(pcx3_timeM,pcx3_bpM,'r.-')
-% plot(pcx4_timeM,pcx4_bpM,'c.-')
-% plot(benj_timeM,press_int,'k.-')
-% title('Barometric Pressure for PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Barometric Pressure(milllibars)')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxpressvs51000.png'
+ figure(3)
+ hold on
+ plot(pcx2_timeM,pcx2_bpM,'g.-')
+ plot(pcx3_timeM,pcx3_bpM,'r.-')
+ plot(pcx4_timeM,pcx4_bpM,'c.-')
+ plot(benj_timeM,press_int,'k.-')
+ title('Barometric Pressure for PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Barometric Pressure(milllibars)')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxpressvs51000.png'
 % 
-% figure(4)
-% hold on
-% plot(benj_timeM,pd4pcx2_press,'g.-')
-% hold on
-% plot(picc_timeM,pd4pcx3_press,'r.-')
-% plot(font_timeM,pd4pcx4_press,'c.-')
-% title('Percent Difference in Barometric Pressure between PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxpressvs51000_pd.png'
-% return
+ figure(4)
+ hold on
+ plot(benj_timeM,pd4pcx2_press,'g.-')
+ hold on
+ plot(picc_timeM,pd4pcx3_press,'r.-')
+ plot(font_timeM,pd4pcx4_press,'c.-')
+ title('Percent Difference in Barometric Pressure between PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxpressvs51000_pd.png'
+ return
 % 
 % 
-% figure(5)
-% hold on
-% plot(pcx2_lon,pcx2_lat,'g.-')
-% hold on
-% plot(pcx3_lon,pcx3_lat,'r.-')
-% plot(pcx4_lon,pcx4_lat,'b.-')
-% title('Position of PacX Wave Gliders')
-% xlabel('Longitude')
-% ylabel('Latitude')
-% legend('Benjamin','Piccard Maru','Fontaine Maru')
-% %datetick('x',6,'keepticks','keeplimits')
+ figure(5)
+ hold on
+ plot(pcx2_lon,pcx2_lat,'g.-')
+ hold on
+ plot(pcx3_lon,pcx3_lat,'r.-')
+ plot(pcx4_lon,pcx4_lat,'b.-')
+ title('Position of PacX Wave Gliders')
+ xlabel('Longitude')
+ ylabel('Latitude')
+ legend('Benjamin','Piccard Maru','Fontaine Maru')
+ datetick('x',6,'keepticks','keeplimits')
 % 
-% return
+ return
 
 % Plot Wind Speed Comparison
-% figure(1)
-% hold on
-% plot(pcx2_timeM,pcx2_wsM,'g.-')
-% plot(pcx3_timeM,pcx3_wsM,'r.-')
-% plot(pcx4_timeM,pcx4_wsM,'c.-')
-% plot(benj_timeM,wspeed_int,'k.-')
-% title('Wind Speed for PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Wind Speed(knots)')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwsvs51000.png'
+ figure(1)
+ hold on
+ plot(pcx2_timeM,pcx2_wsM,'g.-')
+ plot(pcx3_timeM,pcx3_wsM,'r.-')
+ plot(pcx4_timeM,pcx4_wsM,'c.-')
+ plot(benj_timeM,wspeed_int,'k.-')
+ title('Wind Speed for PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Wind Speed(knots)')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwsvs51000.png'
 % 
-% figure(2)
-% hold on
-% plot(benj_timeM,pd4pcx2_wspeed,'g.-')
-% hold on
-% plot(picc_timeM,pd4pcx3_wspeed,'r.-')
-% plot(font_timeM,pd4pcx4_wspeed,'c.-')
-% title('Percent Difference in Wind Speed between PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwsvs51000_pd.png'
+ figure(2)
+ hold on
+ plot(benj_timeM,pd4pcx2_wspeed,'g.-')
+ hold on
+ plot(picc_timeM,pd4pcx3_wspeed,'r.-')
+ plot(font_timeM,pd4pcx4_wspeed,'c.-')
+ title('Percent Difference in Wind Speed between PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwsvs51000_pd.png'
 % 
 % 
 % % Plot Wind Gust Comparison
-% figure(3)
-% hold on          
-% plot(pcx2_timeM,pcx2_wgM,'g.-')
-% plot(pcx3_timeM,pcx3_wgM,'r.-')
-% plot(pcx4_timeM,pcx4_wgM,'c.-')
-% plot(benj_timeM,wgust_int,'k.-')
-% title('Wind Gust for PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Wind Gust(knots)')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
+ figure(3)
+ hold on          
+ plot(pcx2_timeM,pcx2_wgM,'g.-')
+ plot(pcx3_timeM,pcx3_wgM,'r.-')
+ plot(pcx4_timeM,pcx4_wgM,'c.-')
+ plot(benj_timeM,wgust_int,'k.-')
+ title('Wind Gust for PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Wind Gust(knots)')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
 % 
-% figure(4)
-% hold on
-% plot(benj_timeM,pd4pcx2_wgust,'g.-')
-% hold on
-% plot(picc_timeM,pd4pcx3_wgust,'r.-')
-% plot(font_timeM,pd4pcx4_wgust,'c.-')
-% title('Percent Difference in Wind Gust between PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
+ figure(4)
+ hold on
+ plot(benj_timeM,pd4pcx2_wgust,'g.-')
+ hold on
+ plot(picc_timeM,pd4pcx3_wgust,'r.-')
+ plot(font_timeM,pd4pcx4_wgust,'c.-')
+ title('Percent Difference in Wind Gust between PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
 % 
 % Plot Wind Direction Comparison
 
 
-% figure(1)
-% hold on
-% plot(pcx2_timeM,pcx2_wdM,'g.-')
-% plot(pcx3_timeM,pcx3_wdM,'r.-')
-% plot(pcx4_timeM,pcx4_wdM,'c.-')
-% plot(benj_timeM,wdir_int,'k.-')
-% title('Wind Direction for PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Wind Gust(knots)')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwdirvs51000.png'
+ figure(1)
+ hold on
+ plot(pcx2_timeM,pcx2_wdM,'g.-')
+ plot(pcx3_timeM,pcx3_wdM,'r.-')
+ plot(pcx4_timeM,pcx4_wdM,'c.-')
+ plot(benj_timeM,wdir_int,'k.-')
+ title('Wind Direction for PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Wind Gust(knots)')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','NDBC 51000','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwdirvs51000.png'
 % 
-% figure(2)
-% hold on
-% plot(benj_timeM,absdifpcx2_wdir,'g.-')
-% hold on
-% plot(picc_timeM,absdifpcx3_wdir,'r.-')
-% plot(font_timeM,absdifpcx4_wdir,'c.-')
-% title('Absolute Difference in Wind Direction between PacX Gliders and NDBC 51000')
-% xlabel('Date')
-% ylabel('Absolute Difference(degrees)')
-% legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-% print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwdirvs51000_pd.png'
+ figure(2)
+ hold on
+ plot(benj_timeM,absdifpcx2_wdir,'g.-')
+ hold on
+ plot(picc_timeM,absdifpcx3_wdir,'r.-')
+ plot(font_timeM,absdifpcx4_wdir,'c.-')
+ title('Absolute Difference in Wind Direction between PacX Gliders and NDBC 51000')
+ xlabel('Date')
+ ylabel('Absolute Difference(degrees)')
+ legend('Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+ print -dpng 'C:\a_data\pac_crossing\mooring_51000\pacxwdirvs51000_pd.png'
 
 % 
 % 
