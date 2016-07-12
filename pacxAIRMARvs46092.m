@@ -1,28 +1,28 @@
 % pacxAIRMARvs46092.m
 % script to plot weather data from PacX vehicles during their stay at M1 in Monterey Bay
-% Luke Beatman; 11/30/11
+
 
 
 % reading data from NDBC website
-% str = urlread('http://www.ndbc.noaa.gov/data/realtime2/46092.txt');
-% i4header = findstr('ft',str);
-% str = str(i4header+3:end)
-% str = strrep(str,' MM ',' NaN ');
-% str = strrep(str,' MM',' NaN ');
+ str = urlread('http://www.ndbc.noaa.gov/data/realtime2/46092.txt');
+ i4header = findstr('ft',str);
+ str = str(i4header+3:end)
+ str = strrep(str,' MM ',' NaN ');
+ str = strrep(str,' MM',' NaN ');
 % 
-% data = str2num(str);
-% year = data(:,1);
-% month = data(:,2);
-% day = data(:,3);
-% hour = data(:,4);
-% minute = data(:,5);
-% time46092 = datenum(year,month,day,hour,minute,0);
-% wdir = data(:,6);
-% wspd = data(:,7);                                        % wind speed in m/s
-% wspd = wspd*1.9438444925                                 % convert to knots; conversion factor from onlineconversion.com
-% pressure = data(:,13);
-% atemp = data(:,14);
-% wtemp = data(:,15);
+ data = str2num(str);
+ year = data(:,1);
+ month = data(:,2);
+ day = data(:,3);
+ hour = data(:,4);
+ minute = data(:,5);
+ time46092 = datenum(year,month,day,hour,minute,0);
+ wdir = data(:,6);
+ wspd = data(:,7);                                        % wind speed in m/s
+ wspd = wspd*1.9438444925                                 % convert to knots; conversion factor from onlineconversion.com
+ pressure = data(:,13);
+ atemp = data(:,14);
+ wtemp = data(:,15);
 %
 
 
@@ -226,80 +226,80 @@ end
 
 % calculate seperation distance between vehicles and M1 position.
 for j = 1:length(pcx1_latM)
-    %pcx1_sd(j) = gcircle_(m1_latM(j),m1_lonM(j),pcx1_latM(j),pcx1_lonM(j),0)                % output is in nautical miles
+    pcx1_sd(j) = gcircle_(m1_latM(j),m1_lonM(j),pcx1_latM(j),pcx1_lonM(j),0)                % output is in nautical miles
     pcx1_sd(j) = pos2dist(m1_latM(j),m1_lonM(j),pcx1_latM(j),pcx1_lonM(j),1);               % output is in km
 end
 pcx1_sd =  pcx1_sd * .53995680346;                                                        % 1 kilometer = 0.539 956 803 46 mile [nautical, US]; from onlineconversion.com
 i4pcx1sd = find(pcx1_sd < 1)
 
 for j = 1:length(pcx2_latM)
-    %pcx2_sd(j) = gcircle_(m1_latM(j),m1_lonM(j),pcx2_latM(j),pcx2_lonM(j),0);  
+    pcx2_sd(j) = gcircle_(m1_latM(j),m1_lonM(j),pcx2_latM(j),pcx2_lonM(j),0);  
     pcx2_sd(j) = pos2dist(m1_latM(j),m1_lonM(j),pcx2_latM(j),pcx2_lonM(j),1);               % output is in km
 end
 pcx2_sd =  pcx2_sd * .53995680346;                                                        % 1 kilometer = 0.539 956 803 46 mile [nautical, US]; from onlineconversion.com
 i4pcx2sd = find(pcx2_sd < 1)
 
 for j = 1:length(pcx3_latM)
-    %pcx3_sd(j) = gcircle_(m1_latM(j),m1_lonM(j),pcx3_latM(j),pcx3_lonM(j),0);  
+    pcx3_sd(j) = gcircle_(m1_latM(j),m1_lonM(j),pcx3_latM(j),pcx3_lonM(j),0);  
     pcx3_sd(j) = pos2dist(m1_latM(j),m1_lonM(j),pcx3_latM(j),pcx3_lonM(j),1);               % output is in km
 end
 pcx3_sd =  pcx3_sd * .53995680346;                                                        % 1 kilometer = 0.539 956 803 46 mile [nautical, US]; from onlineconversion.com
 i4pcx3sd = find(pcx3_sd < 1)
 
 for j = 1:length(pcx4_latM)
-    %pcx4_sd(j) = gcircle_(m1_latM(j),m1_lonM(j),pcx4_latM(j),pcx4_lonM(j),0);  
+    pcx4_sd(j) = gcircle_(m1_latM(j),m1_lonM(j),pcx4_latM(j),pcx4_lonM(j),0);  
     pcx4_sd(j) = pos2dist(m1_latM(j),m1_lonM(j),pcx4_latM(j),pcx4_lonM(j),1);               % output is in km
 end
 pcx4_sd =  pcx4_sd * .53995680346;                                                        % 1 kilometer = 0.539 956 803 46 mile [nautical, US]; from onlineconversion.com
 i4pcx4sd = find(pcx4_sd < 1)
 
-% count = 1;
-% for j = 1:length(pcx2_latM)
-%   pcx2time_M = datevec(pcx2_timeM(j))
-%   i = find(m1gpstimeM(:,1) == pcx2time_M(1) & m1gpstimeM(:,2) == pcx2time_M(2) & m1gpstimeM(:,3) == pcx2time_M(3) & m1gpstimeM(:,4) == pcx2time_M(4));
-%   if isempty(i)
-%     continue
-%   elseif  length(i) > 1
-%     pcx2_sd(count) = NaN;
-%     continue
-%   else
-%     pcx2_sd(count) = gcircle_(m1_latM(i),m1_lonM(i),pcx2_latM(j),pcx2_lonM(j),0);  
-%   end
-%   hourL = hourL + 1/24;
-%   count = count + 1;
-% end
+ count = 1;
+ for j = 1:length(pcx2_latM)
+   pcx2time_M = datevec(pcx2_timeM(j))
+   i = find(m1gpstimeM(:,1) == pcx2time_M(1) & m1gpstimeM(:,2) == pcx2time_M(2) & m1gpstimeM(:,3) == pcx2time_M(3) & m1gpstimeM(:,4) == pcx2time_M(4));
+   if isempty(i)
+     continue
+   elseif  length(i) > 1
+     pcx2_sd(count) = NaN;
+     continue
+   else
+     pcx2_sd(count) = gcircle_(m1_latM(i),m1_lonM(i),pcx2_latM(j),pcx2_lonM(j),0);  
+   end
+   hourL = hourL + 1/24;
+   count = count + 1;
+ end
 % 
-% count = 1;
-% for j = 1:length(pcx3_latM)
-%   pcx3time_M = datevec(pcx3_timeM(j))
-%   i = find(m1gpstimeM(:,1) == pcx3time_M(1) & m1gpstimeM(:,2) == pcx3time_M(2) & m1gpstimeM(:,3) == pcx3time_M(3) & m1gpstimeM(:,4) == pcx3time_M(4));
-%   if isempty(i)
-%     continue
-%   elseif  length(i) > 1
-%     pcx3_sd(count) = NaN;
-%     continue
-%   else
-%     pcx3_sd(count) = gcircle_(m1_latM(i),m1_lonM(i),pcx3_latM(j),pcx3_lonM(j),0);  
-%   end
-%   hourL = hourL + 1/24;
-%   count = count + 1;
-% end
+ count = 1;
+ for j = 1:length(pcx3_latM)
+   pcx3time_M = datevec(pcx3_timeM(j))
+   i = find(m1gpstimeM(:,1) == pcx3time_M(1) & m1gpstimeM(:,2) == pcx3time_M(2) & m1gpstimeM(:,3) == pcx3time_M(3) & m1gpstimeM(:,4) == pcx3time_M(4));
+   if isempty(i)
+     continue
+   elseif  length(i) > 1
+     pcx3_sd(count) = NaN;
+     continue
+   else
+     pcx3_sd(count) = gcircle_(m1_latM(i),m1_lonM(i),pcx3_latM(j),pcx3_lonM(j),0);  
+   end
+   hourL = hourL + 1/24;
+   count = count + 1;
+ end
 % 
-% count = 1;
-% for j = 1:length(pcx4_latM)
-%   pcx4time_M = datevec(pcx4_timeM(j))
-%   i = find(m1gpstimeM(:,1) == pcx4time_M(1) & m1gpstimeM(:,2) == pcx4time_M(2) & m1gpstimeM(:,3) == pcx4time_M(3) & m1gpstimeM(:,4) == pcx4time_M(4));
-%   if isempty(i)
-%     continue
-%   elseif  length(i) > 1
-%     pcx4_sd(count) = NaN;
-%     continue
-%   else
-%     pcx4_sd(count) = gcircle_(m1_latM(i),m1_lonM(i),pcx4_latM(j),pcx4_lonM(j),0);  
-%   end
-%   hourL = hourL + 1/24;
-%   count = count + 1;
-% end
+ count = 1;
+ for j = 1:length(pcx4_latM)
+   pcx4time_M = datevec(pcx4_timeM(j))
+   i = find(m1gpstimeM(:,1) == pcx4time_M(1) & m1gpstimeM(:,2) == pcx4time_M(2) & m1gpstimeM(:,3) == pcx4time_M(3) & m1gpstimeM(:,4) == pcx4time_M(4));
+   if isempty(i)
+     continue
+   elseif  length(i) > 1
+     pcx4_sd(count) = NaN;
+     continue
+   else
+     pcx4_sd(count) = gcircle_(m1_latM(i),m1_lonM(i),pcx4_latM(j),pcx4_lonM(j),0);  
+   end
+   hourL = hourL + 1/24;
+   count = count + 1;
+ end
 % return
 
 
@@ -411,41 +411,41 @@ pd4pcx4_bp = abs(difpcx44bp./avepcx44bp) * 100;
 
 % dependance of percent difference on vehicle seperation distance 
 
-% vehicle_pd_ws = [pd4pcx1_ws pd4pcx2_ws pd4pcx3_ws pd4pcx4_ws];
-% vehicle_pd_wd = [pd4pcx1_wd pd4pcx2_wd pd4pcx3_wd pd4pcx4_wd];
-% vehicle_pd_at = [pd4pcx1_atemp pd4pcx2_atemp pd4pcx3_atemp pd4pcx4_atemp];
-% vehicle_pd_bp = [pd4pcx1_bp pd4pcx2_bp pd4pcx3_bp pd4pcx4_bp];
-% vehicle_sd = [pcx1_sd pcx2_sd pcx3_sd pcx4_sd];
+ vehicle_pd_ws = [pd4pcx1_ws pd4pcx2_ws pd4pcx3_ws pd4pcx4_ws];
+ vehicle_pd_wd = [pd4pcx1_wd pd4pcx2_wd pd4pcx3_wd pd4pcx4_wd];
+ vehicle_pd_at = [pd4pcx1_atemp pd4pcx2_atemp pd4pcx3_atemp pd4pcx4_atemp];
+ vehicle_pd_bp = [pd4pcx1_bp pd4pcx2_bp pd4pcx3_bp pd4pcx4_bp];
+ vehicle_sd = [pcx1_sd pcx2_sd pcx3_sd pcx4_sd];
 % 
-% i4vsd = isnan(vehicle_sd);
-% vehicle_sd = vehicle_sd(~i4vsd);
+ i4vsd = isnan(vehicle_sd);
+ vehicle_sd = vehicle_sd(~i4vsd);
 % 
-% vehicle_pd_bp = vehicle_pd_bp(~i4vsd); 
+ vehicle_pd_bp = vehicle_pd_bp(~i4vsd); 
 % 
-% [B4bp,r4bp,n,s,C,S,DF,P1,P2,P3,yresid] = regress_(vehicle_sd,vehicle_pd_bp,1,1)
-% ycalc4bp = (B4bp(2)*vehicle_sd) + B4bp(1);
+ [B4bp,r4bp,n,s,C,S,DF,P1,P2,P3,yresid] = regress_(vehicle_sd,vehicle_pd_bp,1,1)
+ ycalc4bp = (B4bp(2)*vehicle_sd) + B4bp(1);
 % 
-% plot(vehicle_sd,vehicle_pd_bp,'b.');hold on
-% plot(vehicle_sd,ycalc4bp,'r-')
-% disp(r4bp)
-% return
+ plot(vehicle_sd,vehicle_pd_bp,'b.');hold on
+ plot(vehicle_sd,ycalc4bp,'r-')
+ disp(r4bp)
+ return
 
 
 
-% plot pacx vehicle wind speeds and M1 windbird and sonic anemometer
-% plot(pcx1_timeM,pcx1_bpM,'b.-')
-% hold on
-% plot(pcx2_timeM,pcx2_bpM,'g.-')
-% plot(pcx3_timeM,pcx3_bpM,'r.-')
-% plot(pcx4_timeM,pcx4_bpM,'c.-')
-% plot(timeM,apresM,'k.-')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% xlabel('Date')
-% ylabel('Barometric Pressure(millibars)')
-% title('Barometric Pressure from PacX Gliders and M1(NDBC 46092)')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','M1')
-% box off
-% print -dpng 'C:\a_data\pac_crossing\pacxbpvsM1.png'
+ plot pacx vehicle wind speeds and M1 windbird and sonic anemometer
+ plot(pcx1_timeM,pcx1_bpM,'b.-')
+ hold on
+ plot(pcx2_timeM,pcx2_bpM,'g.-')
+ plot(pcx3_timeM,pcx3_bpM,'r.-')
+ plot(pcx4_timeM,pcx4_bpM,'c.-')
+ plot(timeM,apresM,'k.-')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ xlabel('Date')
+ ylabel('Barometric Pressure(millibars)')
+ title('Barometric Pressure from PacX Gliders and M1(NDBC 46092)')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','M1')
+ box off
+ print -dpng 'C:\a_data\pac_crossing\pacxbpvsM1.png'
 
 hold on
 plot(pcx1_timeM,pd4pcx1_bp,'b.-')
@@ -503,63 +503,61 @@ return
 
 %return
 % 
-% figure(3)
-% hold on
-% plot(pcx1_timeM,pcx1_wsM,'b.-')
-% plot(pcx2_timeM,pcx2_wsM,'g.-')
-% plot(pcx3_timeM,pcx3_wsM,'r.-')
-% plot(pcx4_timeM,pcx4_wsM,'c.-')
-% plot(timeM,wspd_wbrdM,'k.-')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% xlabel('Date')
-% ylabel('Wind Speed')
-% title('Wind Speed from PacX Vehicles')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','M1:46092')
+ figure(3)
+ hold on
+ plot(pcx1_timeM,pcx1_wsM,'b.-')
+ plot(pcx2_timeM,pcx2_wsM,'g.-')
+ plot(pcx3_timeM,pcx3_wsM,'r.-')
+ plot(pcx4_timeM,pcx4_wsM,'c.-')
+ plot(timeM,wspd_wbrdM,'k.-')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ xlabel('Date')
+ ylabel('Wind Speed')
+ title('Wind Speed from PacX Vehicles')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','M1:46092')
 % 
-% figure(4)
-% hold on
-% plot(pcx1_timeM,pd4pcx1_ws,'b.-')
-% plot(pcx2_timeM,pd4pcx2_ws,'g.-')
-% plot(pcx3_timeM,pd4pcx3_ws,'r.-')
-% plot(pcx4_timeM,pd4pcx4_ws,'c.-')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% title('Percent Difference in Wind Speed between PacX Gliders and M1(NDBC 46092)')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru')
-% print -dpng 'C:\a_data\pac_crossing\pacx_pdws_M1.png'
-% return
+ figure(4)
+ hold on
+ plot(pcx1_timeM,pd4pcx1_ws,'b.-')
+ plot(pcx2_timeM,pd4pcx2_ws,'g.-')
+ plot(pcx3_timeM,pd4pcx3_ws,'r.-')
+ plot(pcx4_timeM,pd4pcx4_ws,'c.-')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ title('Percent Difference in Wind Speed between PacX Gliders and M1(NDBC 46092)')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru')
+ print -dpng 'C:\a_data\pac_crossing\pacx_pdws_M1.png'
+ return
 
 
 % 
-% figure(5)
-% hold on
-% plot(pcx1_timeM,pcx1_wdM,'b.-')
-% plot(pcx2_timeM,pcx2_wdM,'g.-')
-% plot(pcx3_timeM,pcx3_wdM,'r.-')
-% plot(pcx4_timeM,pcx4_wdM,'c.-')
-% plot(timeM,wdir_wbrdM,'k.-')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% xlabel('Date')
-% ylabel('Wind Direction')
-% title('Wind Direction from PacX Vehicles')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','M1:46092')
+ figure(5)
+ hold on
+ plot(pcx1_timeM,pcx1_wdM,'b.-')
+ plot(pcx2_timeM,pcx2_wdM,'g.-')
+ plot(pcx3_timeM,pcx3_wdM,'r.-')
+ plot(pcx4_timeM,pcx4_wdM,'c.-')
+ plot(timeM,wdir_wbrdM,'k.-')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ xlabel('Date')
+ ylabel('Wind Direction')
+ title('Wind Direction from PacX Vehicles')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','M1:46092')
 % 
-% figure(6)
-% hold on
-% plot(pcx1_timeM,pd4pcx1_wd,'b.-')
-% plot(pcx2_timeM,pd4pcx2_wd,'g.-')
-% plot(pcx3_timeM,pd4pcx3_wd,'r.-')
-% plot(pcx4_timeM,pd4pcx4_wd,'c.-')
-% datetick('x','mm/dd','keepticks','keeplimits')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% title('Percent Difference in Wind Direction between PacX Gliders and M1 Wind Bird')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru')
-% print -dpng 'C:\a_data\pac_crossing\pacx_pdwd_M1.png'
-%return
-
-
+ figure(6)
+ hold on
+ plot(pcx1_timeM,pd4pcx1_wd,'b.-')
+ plot(pcx2_timeM,pd4pcx2_wd,'g.-')
+ plot(pcx3_timeM,pd4pcx3_wd,'r.-')
+ plot(pcx4_timeM,pd4pcx4_wd,'c.-')
+ datetick('x','mm/dd','keepticks','keeplimits')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ title('Percent Difference in Wind Direction between PacX Gliders and M1 Wind Bird')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru')
+ print -dpng 'C:\a_data\pac_crossing\pacx_pdwd_M1.png'
+return
 
 
 
