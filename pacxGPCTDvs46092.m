@@ -1,26 +1,26 @@
 % pacxGPCTDvs46092.m
 % script to plot CTD data from PacX vehicles during their stay at M1 in Monterey Bay
-% Luke Beatman; 11/30/11
 
 
-% str = urlread('http://www.ndbc.noaa.gov/data/realtime2/46092.txt');
-% i4header = findstr('ft',str);
-% str = str(i4header+3:end);
-% str = strrep(str,' MM ',' NaN ');
-% str = strrep(str,' MM',' NaN ');
+
+ str = urlread('http://www.ndbc.noaa.gov/data/realtime2/46092.txt');
+ i4header = findstr('ft',str);
+ str = str(i4header+3:end);
+ str = strrep(str,' MM ',' NaN ');
+ str = strrep(str,' MM',' NaN ');
 % 
-% data = str2num(str);
-% year = data(:,1);
-% month = data(:,2);
-% day = data(:,3);
-% hour = data(:,4);
-% minute = data(:,5);
-% time46092 = datenum(year,month,day,hour,minute,0);
-% wdir = data(:,6);
-% wspd = data(:,7);
-% pressure = data(:,13);
-% atemp = data(:,14);
-% wtemp = data(:,15);
+ data = str2num(str);
+ year = data(:,1);
+ month = data(:,2);
+ day = data(:,3);
+ hour = data(:,4);
+ minute = data(:,5);
+ time46092 = datenum(year,month,day,hour,minute,0);
+ wdir = data(:,6);
+ wspd = data(:,7);
+ pressure = data(:,13);
+ atemp = data(:,14);
+ wtemp = data(:,15);
 
 
 
@@ -317,18 +317,18 @@ end
 pcx4_sd =  pcx4_sd * .53995680346;                                                        % 1 kilometer = 0.539 956 803 46 mile [nautical, US]; from onlineconversion.com
 i4pcx4sd = find(pcx4_sd < 1);
 
-% figure(1)
-% hold on
-% plot(pcx1_timeM,pcx1_sd,'b.-')
-% plot(pcx2_timeM,pcx2_sd,'g.-')
-% plot(pcx3_timeM,pcx3_sd,'r.-')
-% plot(pcx4_timeM,pcx4_sd,'c.-')
-% title('Separation Distance between PacX Gliders and M1(NDBC 46092)')
-% xlabel('Date')
-% ylabel('Separation Distance(nautical miles)')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
-% datetick('x',6,'keepticks','keeplimits')
-%return
+ figure(1)
+ hold on
+ plot(pcx1_timeM,pcx1_sd,'b.-')
+ plot(pcx2_timeM,pcx2_sd,'g.-')
+ plot(pcx3_timeM,pcx3_sd,'r.-')
+ plot(pcx4_timeM,pcx4_sd,'c.-')
+ title('Separation Distance between PacX Gliders and M1(NDBC 46092)')
+ xlabel('Date')
+ ylabel('Separation Distance(nautical miles)')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
+ datetick('x',6,'keepticks','keeplimits')
+return
 
 
 
@@ -370,20 +370,20 @@ return
 
 
 % create images for data report
-% figure(1)
-% title('Salinity from PacX Gliders and M1(NDBC 46092)')
-% xlabel('Date')
-% ylabel('Salinity(PSU)')
-% hold on
-% ylim([32.7 33.5])
-% plot(timeM,salM,'k.-')
-% plot(pcx1_timeM,pcx1_salM,'b.-')
-% plot(pcx2_timeM,pcx2_salM,'g.-')
-% plot(pcx3_timeM,pcx3_salM,'r.-')
-% plot(pcx4_timeM,pcx4_salM,'c.-')
-% datetick('x',6,'keepticks','keeplimits')
-% legend('M1','Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
-% print -dpng 'C:\a_data\pac_crossing\pacxsalvsM1_1.png'
+ figure(1)
+ title('Salinity from PacX Gliders and M1(NDBC 46092)')
+ xlabel('Date')
+ ylabel('Salinity(PSU)')
+ hold on
+ ylim([32.7 33.5])
+ plot(timeM,salM,'k.-')
+ plot(pcx1_timeM,pcx1_salM,'b.-')
+ plot(pcx2_timeM,pcx2_salM,'g.-')
+ plot(pcx3_timeM,pcx3_salM,'r.-')
+ plot(pcx4_timeM,pcx4_salM,'c.-')
+ datetick('x',6,'keepticks','keeplimits')
+ legend('M1','Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','SouthEast')
+ print -dpng 'C:\a_data\pac_crossing\pacxsalvsM1_1.png'
 % 
 % figure(2)
 title('Percent Difference in Salinity between PacX Gliders and M1(NDBC 46092)')
@@ -396,35 +396,35 @@ plot(pcx3_timeM,pd4pcx3_sal,'r.-')
 plot(pcx4_timeM,pd4pcx4_sal,'c.-')
 datetick('x',6,'keepticks','keeplimits')
 legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','NorthWest')
-% print -dpng 'C:\a_data\pac_crossing\pacxsalvsM1_2.png'
+ print -dpng 'C:\a_data\pac_crossing\pacxsalvsM1_2.png'
 % 
-% figure(3)
-% title('Temperature from PacX Gliders and M1(NDBC 46092)')
-% xlabel('Date')
-% ylabel('Temperature(degrees C)')
-% hold on
-% %ylim([32.7 33.5])
-% plot(timeM,tempM,'k.-')
-% plot(pcx1_timeM,pcx1_tempM,'b.-')
-% plot(pcx2_timeM,pcx2_tempM,'g.-')
-% plot(pcx3_timeM,pcx3_tempM,'r.-')
-% plot(pcx4_timeM,pcx4_tempM,'c.-')
-% datetick('x',6,'keepticks','keeplimits')
-% legend('M1','Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','SouthWest')
-% print -dpng 'C:\a_data\pac_crossing\pacxtempvsM1_1.png'
+ figure(3)
+ title('Temperature from PacX Gliders and M1(NDBC 46092)')
+ xlabel('Date')
+ ylabel('Temperature(degrees C)')
+ hold on
+ ylim([32.7 33.5])
+ plot(timeM,tempM,'k.-')
+ plot(pcx1_timeM,pcx1_tempM,'b.-')
+ plot(pcx2_timeM,pcx2_tempM,'g.-')
+ plot(pcx3_timeM,pcx3_tempM,'r.-')
+ plot(pcx4_timeM,pcx4_tempM,'c.-')
+ datetick('x',6,'keepticks','keeplimits')
+ legend('M1','Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','SouthWest')
+ print -dpng 'C:\a_data\pac_crossing\pacxtempvsM1_1.png'
 % 
-% figure(4)
-% title('Percent Difference in Temperature between PacX Gliders and M1(NDBC 46092)')
-% xlabel('Date')
-% ylabel('Percent Difference')
-% hold on
-% plot(pcx1_timeM,pd4pcx1_temp,'b.-')
-% plot(pcx2_timeM,pd4pcx2_temp,'g.-')
-% plot(pcx3_timeM,pd4pcx3_temp,'r.-')
-% plot(pcx4_timeM,pd4pcx4_temp,'c.-')
-% datetick('x',6,'keepticks','keeplimits')
-% legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','NorthWest')
-% print -dpng 'C:\a_data\pac_crossing\pacxtempvsM1_2.png'
+ figure(4)
+ title('Percent Difference in Temperature between PacX Gliders and M1(NDBC 46092)')
+ xlabel('Date')
+ ylabel('Percent Difference')
+ hold on
+ plot(pcx1_timeM,pd4pcx1_temp,'b.-')
+ plot(pcx2_timeM,pd4pcx2_temp,'g.-')
+ plot(pcx3_timeM,pd4pcx3_temp,'r.-')
+ plot(pcx4_timeM,pd4pcx4_temp,'c.-')
+ datetick('x',6,'keepticks','keeplimits')
+ legend('Papa Mau','Benjamin','Piccard Maru','Fontaine Maru','location','NorthWest')
+ print -dpng 'C:\a_data\pac_crossing\pacxtempvsM1_2.png'
 
 figure(1)
 plot(oxytime,oxyM1_mLL,'k.-')
